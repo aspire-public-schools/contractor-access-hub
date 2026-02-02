@@ -31,7 +31,6 @@ export function Systems() {
   } = useStore();
   const [selectedContractorId, setSelectedContractorId] = useState<string | null>(null);
   const [selectedSystemIds, setSelectedSystemIds] = useState<string[]>([]);
-  const [createdIds, setCreatedIds] = useState<string[]>([]);
 
   const activeContractors = contractors.filter(
     (c) => c.status === "active" || c.status === "expiring"

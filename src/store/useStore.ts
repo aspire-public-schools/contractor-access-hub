@@ -142,11 +142,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   }, [employees]);
 
   const deactivateContractor = useCallback(
-    (id: string, reasonId: string, notes?: string, contractorName?: string) => {
+    (id: string, _reasonId: string, notes?: string, contractorName?: string) => {
       const now = new Date().toISOString();
-      setContractors((prev) => {
-        const contractor = prev.find((c) => c.id === id);
-        return prev.map((c) =>
+      setContractors((prev) =>
+        prev.map((c) =>
           c.id === id
             ? {
                 ...c,
@@ -156,8 +155,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
                 systemAccess: [],
               }
             : c
-        );
-      });
+        )
+      );
       const c = contractors.find((x) => x.id === id);
       const name = contractorName ?? (c ? `${c.firstName} ${c.lastName}` : undefined);
       setActivities((prev) => [
